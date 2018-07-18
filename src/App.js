@@ -1,35 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-
-import DocumentTitle from 'react-document-title';
 
 import {
   Route,
 } from 'react-router-dom'
 
-import { Button } from 'antd-mobile';
-
-import AScreen from './Screen/AScreen';
-import BScreen from './Screen/BScreen';
-
+import LoginScreen from'./Screen/LoginScreen';
+import HomeScreen from'./Screen/HomeScreen';
+import RegisterScreen from'./Screen/RegisterScreen';
+import CreateUserScreen from'./Screen/CreateUserScreen';
+import TabBarScreen from'./Screen/TabBarScreen';
+import ChangePersonInfoScreen from'./Screen/ChangePersonInfoScreen';
+import ChangePassWordScreen from'./Screen/ChangePassWordScreen';
+import CreateMessageScreen from'./Screen/CreateMessageScreen';
+import UserScreen from'./Screen/UserScreen';
 class App extends Component {
   render() {
     return (
-      <DocumentTitle title='HomeTitle'>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
-          <Button>Click</Button>
-          <Route path={'/a'} component={AScreen} />
-          <Route path={'/b'} component={BScreen} />
-        </div>
-      </DocumentTitle>
+     <div>
+     <Route exact path={'/'} component={LoginScreen} />
+          <Route path={'/RegisterScreen'} component={RegisterScreen}/>
+          <Route path={'/HomeScreen'} component={HomeScreen}/> 
+          <Route path={'/CreateUserScreen'} component={CreateUserScreen}/> 
+          <Route path={'/TabBarScreen'} component={TabBarScreen}/> 
+          <Route path={'/ChangePersonInfoScreen'} component={ChangePersonInfoScreen}/> 
+          <Route path={'/ChangePassWordScreen'} component={ChangePassWordScreen}/> 
+          <Route path={'/CreateMessageScreen'} component={CreateMessageScreen}/>
+          <Route path={'/UserScreen'} component={UserScreen}/>
+     </div>
     );
   }
 }

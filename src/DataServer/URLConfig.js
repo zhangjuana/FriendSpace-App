@@ -1,4 +1,4 @@
-const host = 'http://192.168.1.30:';
+const host = 'http://60.205.141.116:';
 const port = 60004;
 const loginURL = host+port+'/api/login';
 const registerURL = host+port+'/api/register';

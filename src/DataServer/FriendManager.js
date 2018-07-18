@@ -4,20 +4,19 @@ class FriendManager {
     async findUser(nickname) {
         try {
            const user={
+               access_token:localStorage.access_token,
                nickname
            }
            const res=await fetch(findUserURL,{
-            method:'POST',
-            headers:{
-                'Accept':'application/json',
-                'Content/Type':'application/json'
-            },
-            body:JSON.stringify(user)
+               method:'POST',
+               headers:{
+                   'Accept':'appliaction/json',
+                   'Content-Type':'application/json'
+               },
+               body:JSON.stringify(user)
            });
            const result=await res.json();
-           if(result.success===true){
-               localStorage.access_token=result.data.access_token
-           }
+           console.log(result);
             return result;
         } catch (error) {
             return {
@@ -29,22 +28,18 @@ class FriendManager {
     async FollowUser(userId) {
         try {
             const user={
-                userId
+                userId,
+                access_token:localStorage.access_token
             }
             const res=await fetch(followURL,{
                 method:'POST',
                 headers:{
-                    'Accept':'application/json',
-                    'Content/Type':'application/json'
+                    'Accept':'appliaction/json',
+                    'Content-Type':'application/json'
                 },
                 body:JSON.stringify(user)
             });
-         
-            body:JSON.stringify(user)
             const result=await res.json();
-            if(result.success===true){
-                localStorage.access_token=result.data.access_token
-            }
              return result;
         } catch (error) {
             return {
@@ -56,20 +51,18 @@ class FriendManager {
     async unFollowUser(userId) {
         try {
             const user={
-                userId
+                userId,
+                access_token:localStorage.access_token
             }
             const res=await fetch(unFollowURL,{
                 method:'POST',
                 headers:{
-                    'Accept':'application/json',
-                    'Content/Type':'application/json'
+                    'Accept':'appliaction/json',
+                    'Content-Type':'application/json'
                 },
                 body:JSON.stringify(user)
             });
             const result=await res.json();
-            if(result.success===true){
-                localStorage.access_token=result.data.access_token
-            }
              return result;
         } catch (error) {
             return {
@@ -80,16 +73,19 @@ class FriendManager {
     }
     async getFollow(){
         try {
-            const access_token=localStorage.access_token;
+            const user={
+                access_token:localStorage.access_token
+            }
             const res=await fetch(getFollowURL,{
                 method:'POST',
                 headers:{
                     'Accept':'appliaction/json',
-                    'Content/Type':'application/json'
+                    'Content-Type':'application/json'
                 },
-                access_token,
+                body:JSON.stringify(user)
             });
             const result=await res.json();
+            console.log(result);
             return result;
         } catch (error) {
             return {
@@ -98,6 +94,5 @@ class FriendManager {
             }
         }
     }
-
 }
 export default new FriendManager();
